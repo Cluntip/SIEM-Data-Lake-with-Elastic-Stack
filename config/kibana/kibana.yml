@@ -1,0 +1,35 @@
+# Kibana Configuration
+
+# Server
+server.name: kibana
+server.host: "0.0.0.0"
+server.port: 5601
+
+# Elasticsearch
+elasticsearch.hosts: ["https://es01:9200"]
+elasticsearch.username: "kibana_system"
+elasticsearch.password: "${KIBANA_PASSWORD}"
+elasticsearch.ssl.certificateAuthorities: ["/usr/share/elasticsearch/config/certificates/ca/ca.crt"]
+elasticsearch.ssl.verificationMode: certificate
+
+# Encryption Keys
+xpack.encryptedSavedObjects.encryptionKey: "${ENCRYPTION_KEY}"
+xpack.reporting.encryptionKey: "${ENCRYPTION_KEY}"
+
+# Fleet
+xpack.fleet.enabled: true
+xpack.fleet.agents.enabled: true
+xpack.fleet.agents.elasticsearch.hosts: ["https://es01:9200"]
+xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server:8220"]
+
+# SIEM and Security Solution
+xpack.securitySolution.enabled: true
+
+# Monitoring
+monitoring.ui.ccs.enabled: false
+monitoring.ui.container.elasticsearch.enabled: true
+monitoring.kibana.collection.enabled: false
+
+# Telemetry
+telemetry.enabled: false
+telemetry.optIn: false

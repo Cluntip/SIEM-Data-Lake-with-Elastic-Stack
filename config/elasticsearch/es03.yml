@@ -1,0 +1,40 @@
+# Elasticsearch Node 03 Configuration
+cluster.name: siem-datalake
+node.name: es03
+
+# Node roles
+node.roles: [ master, data, ingest ]
+
+# Network
+network.host: 0.0.0.0
+
+# Discovery and Cluster Formation
+discovery.seed_hosts: ["es01", "es02"]
+cluster.initial_master_nodes: ["es01", "es02", "es03"]
+
+# Security - TLS/SSL
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.certificate_authorities: ${CERTS_DIR}/ca/ca.crt
+xpack.security.transport.ssl.certificate: ${CERTS_DIR}/es03/es03.crt
+xpack.security.transport.ssl.key: ${CERTS_DIR}/es03/es03.key
+
+xpack.security.http.ssl.enabled: true
+xpack.security.http.ssl.certificate_authorities: ${CERTS_DIR}/ca/ca.crt
+xpack.security.http.ssl.certificate: ${CERTS_DIR}/es03/es03.crt
+xpack.security.http.ssl.key: ${CERTS_DIR}/es03/es03.key
+
+# Security - Audit Logging
+xpack.security.audit.enabled: true
+xpack.security.audit.logfile.events.include: ["access_granted", "access_denied", "authentication_failed", "connection_denied"]
+xpack.security.audit.logfile.events.emit_request_body: true
+
+# License
+xpack.license.self_generated.type: basic
+
+# Memory Lock
+bootstrap.memory_lock: true
+
+# Action Destructive Requires Name
+action.destructive_requires_name: true

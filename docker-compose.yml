@@ -1,53 +1,238 @@
-version: '3.8'
-
 services:
-  elasticsearch:
-    image: elasticsearch:8.17.1
-    container_name: elasticsearch
-    restart: always
-    volumes:
-      - elastic_data:/usr/share/elasticsearch/data/
+  # Elasticsearch Node 01
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    container_name: ${ES01_NODE_NAME}
     environment:
-      - xpack.security.enabled=false  # Disable security for local development
-      - ES_JAVA_OPTS=-Xmx256m -Xms256m
-      - discovery.type=single-node
-    ports:
-      - '9200:9200'
-    networks:
-      - elk-network
-
-  logstash:
-    image: logstash:8.17.1
-    container_name: logstash
-    restart: always
+      - node.name=${ES01_NODE_NAME}
+      - cluster.name=${CLUSTER_NAME}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=${ES_JAVA_OPTS}"
+      - xpack.license.self_generated.type=${LICENSE}
+      - CERTS_DIR=${CERTS_DIR}
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
     volumes:
-      - ./logstash/:/logstash_dir
-    command: logstash -f /logstash_dir/pipeline/logstash.conf
+      - es01_data:/usr/share/elasticsearch/data
+      - ./certs:${CERTS_DIR}:ro
+      - ./config/elasticsearch/es01.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - ${ES_PORT}:9200
+      - 9300:9300
+    networks:
+      - ${NETWORK_NAME}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -k -u elastic:${ELASTIC_PASSWORD} https://localhost:9200/_cluster/health | grep -q '\"status\":\"green\\|yellow\"'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Elasticsearch Node 02
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    container_name: ${ES02_NODE_NAME}
+    environment:
+      - node.name=${ES02_NODE_NAME}
+      - cluster.name=${CLUSTER_NAME}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=${ES_JAVA_OPTS}"
+      - xpack.license.self_generated.type=${LICENSE}
+      - CERTS_DIR=${CERTS_DIR}
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - es02_data:/usr/share/elasticsearch/data
+      - ./certs:${CERTS_DIR}:ro
+      - ./config/elasticsearch/es02.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    networks:
+      - ${NETWORK_NAME}
     depends_on:
-      - elasticsearch
-    ports:
-      - '5044:5044'
-    environment:
-      - LS_JAVA_OPTS=-Xmx256m -Xms256m
-    networks:
-      - elk-network
+      - es01
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -k -u elastic:${ELASTIC_PASSWORD} https://localhost:9200/_cluster/health | grep -q '\"status\":\"green\\|yellow\"'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
+  # Elasticsearch Node 03
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    container_name: ${ES03_NODE_NAME}
+    environment:
+      - node.name=${ES03_NODE_NAME}
+      - cluster.name=${CLUSTER_NAME}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=${ES_JAVA_OPTS}"
+      - xpack.license.self_generated.type=${LICENSE}
+      - CERTS_DIR=${CERTS_DIR}
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - es03_data:/usr/share/elasticsearch/data
+      - ./certs:${CERTS_DIR}:ro
+      - ./config/elasticsearch/es03.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    networks:
+      - ${NETWORK_NAME}
+    depends_on:
+      - es01
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -k -u elastic:${ELASTIC_PASSWORD} https://localhost:9200/_cluster/health | grep -q '\"status\":\"green\\|yellow\"'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Kibana
   kibana:
-    image: kibana:8.17.1
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
     container_name: kibana
-    restart: always
-    ports:
-      - '5601:5601'
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
-    depends_on:
-      - elasticsearch
+      - SERVERNAME=kibana
+      - ELASTICSEARCH_HOSTS=https://es01:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+      - KIBANA_PASSWORD=${KIBANA_PASSWORD}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - XPACK_SECURITY_ENCRYPTIONKEY=${ENCRYPTION_KEY}
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${ENCRYPTION_KEY}
+      - XPACK_REPORTING_ENCRYPTIONKEY=${ENCRYPTION_KEY}
+    volumes:
+      - kibana_data:/usr/share/kibana/data
+      - ./certs:${CERTS_DIR}:ro
+      - ./config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+    ports:
+      - ${KB_PORT}:5601
     networks:
-      - elk-network
+      - ${NETWORK_NAME}
+    depends_on:
+      es01:
+        condition: service_healthy
+      es02:
+        condition: service_healthy
+      es03:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -I http://localhost:5601 | grep -q 'HTTP/1.1 302 Found'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Fleet Server
+  fleet-server:
+    image: docker.elastic.co/beats/elastic-agent:${ELASTIC_VERSION}
+    container_name: fleet-server
+    hostname: fleet-server
+    environment:
+      - FLEET_SERVER_ENABLE=true
+      - FLEET_SERVER_ELASTICSEARCH_HOST=https://es01:9200
+      - FLEET_SERVER_ELASTICSEARCH_CA=${CERTS_DIR}/ca/ca.crt
+      - FLEET_SERVER_SERVICE_TOKEN=${FLEET_SERVICE_TOKEN:-AAEAAWVsYXN0aWMvZmxlZXQtc2VydmVyL3Rva2VuLTE2NzM5NzQ0MDAwMDE6dGVzdC10b2tlbi12YWx1ZQ}
+      - FLEET_SERVER_POLICY_ID=fleet-server-policy
+      - FLEET_SERVER_PORT=8220
+      - FLEET_SERVER_HOST=0.0.0.0
+      - FLEET_URL=https://fleet-server:8220
+      - KIBANA_FLEET_SETUP=true
+      - KIBANA_FLEET_HOST=http://kibana:5601
+      - KIBANA_FLEET_USERNAME=elastic
+      - KIBANA_FLEET_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - FLEET_SERVER_CERT=${CERTS_DIR}/es01/es01.crt
+      - FLEET_SERVER_CERT_KEY=${CERTS_DIR}/es01/es01.key
+      - CERTIFICATE_AUTHORITIES=${CERTS_DIR}/ca/ca.crt
+    volumes:
+      - fleet_data:/usr/share/elastic-agent/state
+      - ./certs:${CERTS_DIR}:ro
+    ports:
+      - ${FLEET_PORT}:8220
+    networks:
+      - ${NETWORK_NAME}
+    depends_on:
+      kibana:
+        condition: service_healthy
+
+  # Logstash
+  logstash:
+    image: docker.elastic.co/logstash/logstash:${ELASTIC_VERSION}
+    container_name: logstash
+    environment:
+      - "LS_JAVA_OPTS=${LS_JAVA_OPTS}"
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch.hosts=["https://es01:9200"]
+      - xpack.monitoring.elasticsearch.username=elastic
+      - xpack.monitoring.elasticsearch.password=${ELASTIC_PASSWORD}
+      - xpack.monitoring.elasticsearch.ssl.certificate_authority=${CERTS_DIR}/ca/ca.crt
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./certs:${CERTS_DIR}:ro
+      - logstash_data:/usr/share/logstash/data
+    ports:
+      - ${LS_PORT}:5044
+      - 5045:5045
+      - 9600:9600
+    networks:
+      - ${NETWORK_NAME}
+    depends_on:
+      es01:
+        condition: service_healthy
+      es02:
+        condition: service_healthy
+      es03:
+        condition: service_healthy
+
+  # Customer Service Application
+  customer-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: customer-service
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOGSTASH_HOST=logstash
+      - LOGSTASH_PORT=5044
+    volumes:
+      - ./app:/app:ro
+    ports:
+      - 8081:8081
+    networks:
+      - ${NETWORK_NAME}
+    depends_on:
+      - logstash
+    restart: always
 
 networks:
-  elk-network:
+  elk-siem-network:
+    name: ${NETWORK_NAME}
     driver: bridge
 
 volumes:
-  elastic_data: {}
+  es01_data:
+    driver: local
+  es02_data:
+    driver: local
+  es03_data:
+    driver: local
+  kibana_data:
+    driver: local
+  logstash_data:
+    driver: local
+  fleet_data:
+    driver: local
