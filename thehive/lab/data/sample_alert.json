@@ -1,0 +1,23 @@
+{
+  "title": "Suspicious outbound connection",
+  "description": "Generated from the lab sample payload",
+  "type": "external",
+  "source": "siem-lab",
+  "sourceRef": "lab-2026-05-08-001",
+  "severity": 2,
+  "tags": ["lab", "misp", "network"],
+  "tlp": 2,
+  "pap": 2,
+  "artifacts": [
+    {
+      "dataType": "ip",
+      "data": "198.51.100.23",
+      "message": "Suspicious command-and-control address"
+    },
+    {
+      "dataType": "domain",
+      "data": "bad-example.net",
+      "message": "Phishing infrastructure"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "took" : 3,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 2,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "zeek-2026.03.17",
+        "_id" : "PTDY-ZwBnkFQvC3inIJO",
+        "_score" : 1.0,
+        "_source" : {
+          "resp_pkts" : 3,
+          "service_name" : "zeek",
+          "orig_ip_bytes" : 236,
+          "observer" : {
+            "type" : "nsm",
+            "vendor" : "Zeek"
+          },
+          "local_orig" : true,
+          "@version" : "1",
+          "destination" : {
+            "port" : 80,
+            "ip" : "10.10.10.20"
+          },
+          "service" : "http",
+          "orig_bytes" : 37,
+          "duration" : 0.0011250972747802734,
+          "timestamp" : "2026-03-17T03:24:46.261Z",
+          "uid" : "Ck9F5q2b7rtO8BbZQ2",
+          "agent" : {
+            "name" : "acbf470e37a4",
+            "type" : "filebeat",
+            "version" : "8.17.1",
+            "ephemeral_id" : "0d6b6dbd-fd5c-4b31-80c8-dc4c6b89db60",
+            "id" : "2f91369a-2e3d-4ebb-8c8a-7badbc805e1f"
+          },
+          "event" : {
+            "dataset" : "zeek.conn",
+            "module" : "zeek"
+          },
+          "host" : {
+            "name" : "acbf470e37a4"
+          },
+          "zeek_log_type" : "conn",
+          "ip_proto" : 6,
+          "source" : {
+            "ip" : "10.10.10.10",
+            "geo" : { },
+            "port" : 51514
+          },
+          "orig_pkts" : 5,
+          "ts" : 1.773717886261776E9,
+          "id" : {
+            "orig_h" : "10.10.10.10",
+            "orig_p" : 51514,
+            "resp_h" : "10.10.10.20",
+            "resp_p" : 80
+          },
+          "tags" : [
+            "beats_input_raw_event",
+            "_geoip_lookup_failure"
+          ],
+          "proto" : "tcp",
+          "ingest_source" : "zeek-filebeat",
+          "ecs" : {
+            "version" : "8.0.0"
+          },
+          "resp_ip_bytes" : 160,
+          "resp_bytes" : 40,
+          "conn_state" : "SF",
+          "missed_bytes" : 1,
+          "local_resp" : true,
+          "@timestamp" : "2026-03-17T03:24:46.261Z",
+          "input" : {
+            "type" : "filestream"
+          },
+          "log" : {
+            "offset" : 395,
+            "file" : {
+              "path" : "/usr/share/filebeat/zeek/current/conn.log",
+              "device_id" : "66306",
+              "inode" : "524539"
+            }
+          },
+          "history" : "ShADdGFf"
+        }
+      },
+      {
+        "_index" : "zeek-2026.03.17",
+        "_id" : "43fY-ZwBATop9xoRnGFO",
+        "_score" : 1.0,
+        "_source" : {
+          "resp_pkts" : 1,
+          "service_name" : "zeek",
+          "orig_ip_bytes" : 57,
+          "observer" : {
+            "type" : "nsm",
+            "vendor" : "Zeek"
+          },
+          "local_orig" : true,
+          "@version" : "1",
+          "destination" : {
+            "port" : 53,
+            "ip" : "8.8.8.8"
+          },
+          "service" : "dns",
+          "orig_bytes" : 29,
+          "duration" : 3.3211708068847656E-4,
+          "timestamp" : "2026-03-17T03:24:46.263Z",
+          "uid" : "CJMigHYV42APsxlHe",
+          "agent" : {
+            "name" : "acbf470e37a4",
+            "version" : "8.17.1",
+            "ephemeral_id" : "0d6b6dbd-fd5c-4b31-80c8-dc4c6b89db60",
+            "id" : "2f91369a-2e3d-4ebb-8c8a-7badbc805e1f",
+            "type" : "filebeat"
+          },
+          "event" : {
+            "dataset" : "zeek.conn",
+            "module" : "zeek"
+          },
+          "zeek_log_type" : "conn",
+          "host" : {
+            "name" : "acbf470e37a4"
+          },
+          "ip_proto" : 17,
+          "source" : {
+            "ip" : "10.10.10.10",
+            "geo" : { },
+            "port" : 53000
+          },
+          "orig_pkts" : 1,
+          "ts" : 1.773717886263152E9,
+          "id" : {
+            "orig_h" : "10.10.10.10",
+            "orig_p" : 53000,
+            "resp_h" : "8.8.8.8",
+            "resp_p" : 53
+          },
+          "tags" : [
+            "beats_input_raw_event",
+            "_geoip_lookup_failure"
+          ],
+          "ingest_source" : "zeek-filebeat",
+          "proto" : "udp",
+          "ecs" : {
+            "version" : "8.0.0"
+          },
+          "resp_ip_bytes" : 84,
+          "conn_state" : "SF",
+          "resp_bytes" : 56,
+          "missed_bytes" : 0,
+          "local_resp" : false,
+          "@timestamp" : "2026-03-17T03:24:46.263Z",
+          "history" : "Dd",
+          "input" : {
+            "type" : "filestream"
+          },
+          "log" : {
+            "offset" : 0,
+            "file" : {
+              "path" : "/usr/share/filebeat/zeek/current/conn.log",
+              "device_id" : "66306",
+              "inode" : "524539"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+=== Elastic Stack Container Status ===
+Date: Tue Mar 17 06:05:30 AM EET 2026
+
+NAMES                                               STATUS                    PORTS
+customer-service                                    Up 2 hours                0.0.0.0:8081->8081/tcp, :::8081->8081/tcp
+logstash                                            Up 35 minutes             0.0.0.0:5044-5045->5044-5045/tcp, :::5044-5045->5044-5045/tcp, 0.0.0.0:9600->9600/tcp, :::9600->9600/tcp
+kibana                                              Up 2 hours (healthy)      0.0.0.0:5601->5601/tcp, :::5601->5601/tcp
+es03                                                Up 2 hours (healthy)      9200/tcp, 9300/tcp
+es02                                                Up 2 hours (healthy)      9200/tcp, 9300/tcp
+es01                                                Up 2 hours (healthy)      0.0.0.0:9200->9200/tcp, :::9200->9200/tcp, 0.0.0.0:9300->9300/tcp, :::9300->9300/tcp

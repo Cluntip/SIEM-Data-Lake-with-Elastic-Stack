@@ -1,0 +1,9 @@
+FROM python:3.11-slim
+
+WORKDIR /workspace
+
+RUN pip install --no-cache-dir scapy==2.5.0
+
+COPY scripts/generate_sample_pcap.py /workspace/generate_sample_pcap.py
+
+ENTRYPOINT ["python", "/workspace/generate_sample_pcap.py"]

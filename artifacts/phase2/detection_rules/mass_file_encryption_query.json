@@ -1,0 +1,16 @@
+{
+  "name": "Mass File Encryption Detection",
+  "description": "Detect host-level mass file renames to .encrypted extension within 1 minute.",
+  "risk_score": 85,
+  "severity": "critical",
+  "type": "query",
+  "index": ["logs-endpoint.events.file-*","logs-endpoint.events.*"],
+  "language": "kuery",
+  "query": "event.action: \"rename\" and file.name: *.encrypted",
+  "threshold": {
+    "field": "host.hostname",
+    "value": 50,
+    "time_window": "1m"
+  },
+  "enabled": true
+}

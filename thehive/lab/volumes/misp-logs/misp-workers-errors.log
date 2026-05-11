@@ -1,0 +1,128 @@
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}
+Error: read error on connection to misp-redis:6379
+#0 /var/www/MISP/app/Lib/Tools/BackgroundJobsTool.php(269): Redis->blPop()
+#1 /var/www/MISP/app/Console/Command/StartWorkerShell.php(62): BackgroundJobsTool->dequeue()
+#2 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/Shell.php(462): StartWorkerShell->main()
+#3 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(222): Shell->runCommand()
+#4 /var/www/MISP/app/Lib/cakephp/lib/Cake/Console/ShellDispatcher.php(66): ShellDispatcher->dispatch()
+#5 /var/www/MISP/app/Console/cake.php(47): ShellDispatcher::run()
+#6 {main}

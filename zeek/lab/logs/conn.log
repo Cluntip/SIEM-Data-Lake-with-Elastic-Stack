@@ -1,0 +1,17 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	conn
+#open	2026-05-08-11-55-20
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto	service	duration	orig_bytes	resp_bytes	conn_state	local_orig	local_resp	missed_bytes	history	orig_pkts	orig_ip_bytes	resp_pkts	resp_ip_bytes	tunnel_parents	ip_proto
+#types	time	string	addr	port	addr	port	enum	string	interval	count	count	string	bool	bool	count	string	count	count	count	count	set[string]	count
+1778241320.336938	C2PvVF4QcHvpkDesFk	127.0.0.1	38266	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	C	0	0	0	0	-	6
+1778241320.336952	Ck93mK2mFHPVI5lV4b	127.0.0.1	38266	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	^cC	0	0	0	0	-	61778241335.942238	C5HHah3QhiSsT3IoSk	127.0.0.1	58258	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	C	0	0	0	0	-	6
+1778241335.983386	CAiqNG2F1o9Yk7Bat7	127.0.0.1	58266	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	C	0	0	0	0	-	6
+1778241335.942248	CkjaJq1NMW0Vn6KQ1	127.0.0.1	58258	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	^cC	0	0	0	0	-	6
+1778241335.983407	C5CWAv2lmoaQqJyuli	127.0.0.1	58266	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	^cC	0	0	0	0	-	6
+171778241368.885914	ClhC5ogXZsS9iFnlj	127.0.0.1	60424	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	C	0	0	0	0	-	611778241368.885927	C3cudk0Dk4d7qefz4	127.0.0.1	60424	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	^cC	0	0	0	0	-	6
+1778241381.898925	CW4YHX1u1Zo9WrOtW2	127.0.0.1	49258	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	C	0	0	0	0	-	6
+1778241383.698948	CMYkwx3vpDIQKn7TNl	127.0.0.1	49264	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	C	0	0	0	0	-	611778241381.898943	CJqH2x4IjkWhm7IFdj	127.0.0.1	49258	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	^cC	0	0	0	0	-	171778241383.698960	C4vAAz4O6fkaRKTOKl	127.0.0.1	49264	127.0.0.1	8080	tcp	-	-	-	-	OTH	T	T	0	^cC	0	0	0	0	-	#close	2026-05-08-11-56-43
+8

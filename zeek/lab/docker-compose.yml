@@ -1,0 +1,13 @@
+services:
+  zeek-lab:
+    image: zeek-lab:latest
+    build: .
+    network_mode: "host"
+    volumes:
+      - ./logs:/zeek/logs
+      - ./pcaps:/pcap
+      - ./scripts:/opt/zeek/scripts:ro
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    restart: unless-stopped

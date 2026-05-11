@@ -1,0 +1,3 @@
+NAME             IMAGE            COMMAND                  SERVICE     CREATED         STATUS                   PORTS
+zeek-forwarder   zeek-forwarder   "/usr/local/bin/forw…"   forwarder   2 minutes ago   Up 2 minutes             
+zeek-sensor      zeek-zeek        "/usr/local/bin/run-…"   zeek        9 minutes ago   Up 9 minutes (healthy)   

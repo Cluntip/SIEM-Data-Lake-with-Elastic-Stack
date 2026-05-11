@@ -1,0 +1,21 @@
+=== OpenVAS/GVM Container Status ===
+Date: Tue Mar 17 06:06:29 AM EET 2026
+
+NAMES                                               STATUS
+web-dvwa                                            Up 5 hours
+greenbone-community-edition-nginx-1                 Up 5 hours
+greenbone-community-edition-gsad-1                  Up 5 hours
+greenbone-community-edition-gvmd-1                  Up 5 hours
+greenbone-community-edition-pg-gvm-1                Up 5 hours
+greenbone-community-edition-ospd-openvas-1          Up 5 hours
+greenbone-community-edition-openvas-1               Up 5 hours
+greenbone-community-edition-openvasd-1              Up 5 hours
+greenbone-community-edition-report-formats-1        Up 5 hours (healthy)
+greenbone-community-edition-dfn-cert-data-1         Up 5 hours (healthy)
+greenbone-community-edition-redis-server-1          Up 5 hours
+greenbone-community-edition-cert-bund-data-1        Up 5 hours (healthy)
+greenbone-community-edition-scap-data-1             Up 5 hours (healthy)
+greenbone-community-edition-notus-data-1            Up 5 hours (healthy)
+greenbone-community-edition-gsa-1                   Up 5 hours (healthy)
+greenbone-community-edition-data-objects-1          Up 5 hours (healthy)
+greenbone-community-edition-vulnerability-tests-1   Up 5 hours (healthy)

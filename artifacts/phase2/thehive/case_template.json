@@ -1,0 +1,16 @@
+{
+  "name": "IR Playbook - Ransomware / Mass Encryption",
+  "description": "Contain, Investigate, Communicate steps for ransomware/mass encryption detection.",
+  "fields": [
+    {"title":"Contain: Isolate Host","description":"Query Kibana for process list and use Wazuh active response to isolate host (block network).","order":1},
+    {"title":"Investigate: Timeline","description":"Use Kibana Timeline to reconstruct attack chain and gather evidence (processes, network, file events).","order":2},
+    {"title":"Communicate: Notify CISO","description":"Use the pre-defined email template to notify relevant stakeholders with case summary.","order":3}
+  ],
+  "tasks": [
+    {"title":"Collect process list","order":1,"action":"Kibana -> process logs"},
+    {"title":"Quarantine host via Wazuh","order":2,"action":"Wazuh active response"},
+    {"title":"Export timeline evidence","order":3,"action":"Kibana Timeline export"},
+    {"title":"Create stakeholder notification","order":4,"action":"TheHive email template"}
+  ],
+  "tags": ["ransomware","containment","investigation"]
+}

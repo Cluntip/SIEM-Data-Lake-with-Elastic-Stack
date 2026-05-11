@@ -1,0 +1,55 @@
+2026-05-08 15:55:27 Info: [WORKER PID: 2765][cache] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2769][update] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2762][default] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2763][default] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2767][prio] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2764][email] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2768][prio] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2766][cache] - starting to process background jobs...
+2026-05-08 15:55:27 Info: [WORKER PID: 2770][scheduler] - starting task scheduler...
+2026-05-08 15:56:12 Info: Browscap - building new cache from browscap.ini file.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 1 - processing task: Feed
+2026-05-08 15:56:37 Info: [WORKER PID: 2763][default] - launching job with ID: ee4b4e05-f680-484d-a8f3-8d7ab3f02adb
+2026-05-08 15:56:37 Info: [JOB ID: ee4b4e05-f680-484d-a8f3-8d7ab3f02adb] - started command `server fetchFeed 1 all 1`.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 1 - enqueued fetch for Feed ID: all.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 2 - processing task: Feed
+2026-05-08 15:56:37 Info: [WORKER PID: 2762][default] - launching job with ID: 5decb7d7-fc9e-4759-97bf-419459acf746
+2026-05-08 15:56:37 Info: [JOB ID: 5decb7d7-fc9e-4759-97bf-419459acf746] - started command `server cacheFeed 1 all 2`.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 2 - enqueued cache for Feed with scope: all.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 3 - processing task: Server
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 3 - enqueued Server Pull for all servers.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 4 - processing task: Server
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 4 - enqueued Server Push for all servers.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 5 - processing task: Admin
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 5 - enqueued Admin Action: updateGalaxies.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 6 - processing task: Admin
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 6 - enqueued Admin Action: updateTaxonomies.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 7 - processing task: Admin
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 7 - enqueued Admin Action: updateWarningLists.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 8 - processing task: Admin
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 8 - enqueued Admin Action: updateNoticeLists.
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 9 - processing task: Admin
+2026-05-08 15:56:37 Info: [WORKER PID: 2770][scheduler] - Task ID: 9 - enqueued Admin Action: updateObjectTemplates.
+2026-05-08 15:56:37 Info: [JOB ID: ee4b4e05-f680-484d-a8f3-8d7ab3f02adb] - successfully completed in 0.087 seconds.
+2026-05-08 15:56:37 Info: [WORKER PID: 2763][default] - launching job with ID: f39e90ed-de4d-4ee0-8315-05eb1b0a00f6
+2026-05-08 15:56:37 Info: [JOB ID: f39e90ed-de4d-4ee0-8315-05eb1b0a00f6] - started command `server pullAll 1 full 3`.
+2026-05-08 15:56:37 Info: [JOB ID: 5decb7d7-fc9e-4759-97bf-419459acf746] - successfully completed in 0.082 seconds.
+2026-05-08 15:56:37 Info: [WORKER PID: 2762][default] - launching job with ID: da70e4c7-7fbc-4ac1-8279-27dc67bd9e72
+2026-05-08 15:56:37 Info: [JOB ID: da70e4c7-7fbc-4ac1-8279-27dc67bd9e72] - started command `server pushAll 1 full 4`.
+2026-05-08 15:56:38 Info: [JOB ID: da70e4c7-7fbc-4ac1-8279-27dc67bd9e72] - successfully completed in 0.087 seconds.
+2026-05-08 15:56:38 Info: [WORKER PID: 2762][default] - launching job with ID: c63759b7-e9ab-4f28-8c7c-4ca3b325db40
+2026-05-08 15:56:38 Info: [JOB ID: c63759b7-e9ab-4f28-8c7c-4ca3b325db40] - started command `admin updateGalaxies  5`.
+2026-05-08 15:56:38 Info: [JOB ID: f39e90ed-de4d-4ee0-8315-05eb1b0a00f6] - successfully completed in 0.093 seconds.
+2026-05-08 15:56:38 Info: [WORKER PID: 2763][default] - launching job with ID: 479d3166-cb71-425f-a6ce-3c2c0d27d686
+2026-05-08 15:56:38 Info: [JOB ID: 479d3166-cb71-425f-a6ce-3c2c0d27d686] - started command `admin updateTaxonomies 6`.
+2026-05-08 15:56:38 Info: [JOB ID: 479d3166-cb71-425f-a6ce-3c2c0d27d686] - successfully completed in 0.101 seconds.
+2026-05-08 15:56:38 Info: [WORKER PID: 2763][default] - launching job with ID: f2ea05f3-578a-43de-ab23-05eb599c01d1
+2026-05-08 15:56:38 Info: [JOB ID: f2ea05f3-578a-43de-ab23-05eb599c01d1] - started command `admin updateWarningLists 7`.
+2026-05-08 15:56:38 Info: [JOB ID: f2ea05f3-578a-43de-ab23-05eb599c01d1] - successfully completed in 0.241 seconds.
+2026-05-08 15:56:38 Info: [WORKER PID: 2763][default] - launching job with ID: 236b3fe2-28c2-4a40-8ff1-751a6cc48c82
+2026-05-08 15:56:38 Info: [JOB ID: 236b3fe2-28c2-4a40-8ff1-751a6cc48c82] - started command `admin updateNoticeLists 8`.
+2026-05-08 15:56:38 Info: [JOB ID: c63759b7-e9ab-4f28-8c7c-4ca3b325db40] - successfully completed in 0.433 seconds.
+2026-05-08 15:56:38 Info: [WORKER PID: 2762][default] - launching job with ID: c3f1e857-f3b9-40b2-a4c5-635b2fa069b0
+2026-05-08 15:56:38 Info: [JOB ID: c3f1e857-f3b9-40b2-a4c5-635b2fa069b0] - started command `admin updateObjectTemplates 1 9`.
+2026-05-08 15:56:38 Info: [JOB ID: 236b3fe2-28c2-4a40-8ff1-751a6cc48c82] - successfully completed in 0.096 seconds.
+2026-05-08 15:56:38 Info: [JOB ID: c3f1e857-f3b9-40b2-a4c5-635b2fa069b0] - successfully completed in 0.133 seconds.

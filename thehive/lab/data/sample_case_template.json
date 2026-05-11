@@ -1,0 +1,11 @@
+{
+  "name": "Phishing Investigation",
+  "description": "Standard response template for suspected phishing activity",
+  "tags": ["phishing", "lab"],
+  "tasks": [
+    { "title": "Investigate logs" },
+    { "title": "Collect observables" },
+    { "title": "Contain threat" },
+    { "title": "Notify stakeholders" }
+  ]
+}

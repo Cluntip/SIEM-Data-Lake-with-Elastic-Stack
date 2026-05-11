@@ -1,0 +1,12 @@
+{
+  "name": "Suspicious PowerShell Download and Execute",
+  "description": "Detect PowerShell spawning webclient/curl/downloader and executing payloads.",
+  "risk_score": 70,
+  "severity": "high",
+  "type": "eql",
+  "index": ["logs-endpoint.events.process-*"],
+  "language": "eql",
+  "query": "process where process.name : (\"powershell.exe\", \"pwsh.exe\") and process.args : (\"-enc\", \"-EncodedCommand\", \"Invoke-WebRequest\", \"Invoke-Expression\")",
+  "interval": "5m",
+  "enabled": true
+}

@@ -1,0 +1,5 @@
+category,type,value,comment,to_ids,distribution
+Network activity,ip-dst,198.51.100.23,Suspicious command-and-control address,true,3
+Network activity,domain,bad-example.net,Phishing infrastructure,false,3
+Payload delivery,url,https://example.org/downloads/quarterly-update.exe,Fake malware download,true,3
+Payload delivery,sha256,2f2c6d8fdb07a5b38f6c0e8f0f3d0ac5d3ef2f6db824b3b8d2d1a6b7a3f4e1d9,Known bad file hash,true,3

@@ -1,0 +1,100 @@
+services:
+  db:
+    image: mariadb:11.4
+    container_name: misp-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MYSQL_DATABASE}
+      MARIADB_USER: ${MYSQL_USER}
+      MARIADB_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -u root -p\"$${MARIADB_ROOT_PASSWORD}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+
+  redis:
+    image: redis:7-alpine
+    container_name: misp-redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: misp-mailhog
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+
+  misp-modules:
+    image: ghcr.io/misp/misp-docker/misp-modules:latest
+    container_name: misp-modules
+    restart: unless-stopped
+    ports:
+      - "6666:6666"
+
+  misp-core:
+    image: ghcr.io/misp/misp-docker/misp-core:latest
+    container_name: misp-core
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      misp-modules:
+        condition: service_started
+      mailhog:
+        condition: service_started
+    ports:
+      - "${MISP_HTTPS_PORT}:443"
+      - "${MISP_HTTP_PORT}:80"
+    environment:
+      BASE_URL: ${BASE_URL}
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      ENABLE_REDIS_EMPTY_PASSWORD: "true"
+      SMTP_FQDN: mailhog
+      SMTP_PORT: 1025
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_ORG: ${ADMIN_ORG}
+      ADMIN_ORG_UUID: ${ADMIN_ORG_UUID}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      GPG_PASSPHRASE: ${GPG_PASSPHRASE}
+      MISP_EMAIL: ${MISP_EMAIL}
+      MISP_CONTACT: ${MISP_CONTACT}
+      MISP_MODULES_FQDN: ${MISP_MODULES_FQDN}
+      ENABLE_DB_SETTINGS: "true"
+      AUTOCONF_GPG: "true"
+      AUTOCONF_ADMIN_KEY: "true"
+      AUTOGEN_ADMIN_KEY: "true"
+      ENABLE_BACKGROUND_UPDATES: "true"
+      PROXY_ENABLE: "false"
+      DEBUG: "0"
+      NUM_WORKERS_DEFAULT: "2"
+      NUM_WORKERS_PRIO: "2"
+      NUM_WORKERS_EMAIL: "1"
+      NUM_WORKERS_UPDATE: "1"
+      NUM_WORKERS_CACHE: "2"
+      CRON_PULLALL: "86400"
+      CRON_PUSHALL: "86400"
+      CUSTOM_PATH: /custom
+    volumes:
+      - ./config:/var/www/MISP/app/Config
+      - ./logs:/var/www/MISP/app/tmp/logs
+      - ./files:/var/www/MISP/app/files
+      - ./gnupg:/var/www/MISP/.gnupg
+      - ./scripts:/custom/files:ro

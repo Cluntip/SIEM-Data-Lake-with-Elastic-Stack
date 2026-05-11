@@ -1,0 +1,41 @@
+services:
+  pcap-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile.generator
+    container_name: zeek-pcap-generator
+    volumes:
+      - ./pcap:/output
+    restart: "no"
+
+  zeek:
+    build:
+      context: .
+      dockerfile: Dockerfile.zeek
+    container_name: zeek-sensor
+    volumes:
+      - ./pcap:/zeek/pcap
+      - ./logs:/zeek/logs
+    depends_on:
+      pcap-generator:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "test -s /zeek/logs/current/conn.log"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  forwarder:
+    build:
+      context: .
+      dockerfile: Dockerfile.forwarder
+    container_name: zeek-forwarder
+    volumes:
+      - ./logs:/zeek/logs:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      zeek:
+        condition: service_healthy
+    restart: unless-stopped

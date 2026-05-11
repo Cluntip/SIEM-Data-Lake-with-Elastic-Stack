@@ -1,0 +1,24 @@
+{
+  "Event": {
+    "info": "SIEM lab IOC import sample",
+    "distribution": 0,
+    "threat_level_id": 2,
+    "analysis": 1,
+    "Attribute": [
+      {
+        "category": "Network activity",
+        "type": "ip-dst",
+        "value": "198.51.100.23",
+        "to_ids": true,
+        "comment": "Suspicious command-and-control address"
+      },
+      {
+        "category": "Network activity",
+        "type": "domain",
+        "value": "bad-example.net",
+        "to_ids": false,
+        "comment": "Phishing infrastructure"
+      }
+    ]
+  }
+}

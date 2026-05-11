@@ -1,0 +1,5 @@
+cluster.name: ${CLUSTER_NAME}
+network.host: 0.0.0.0
+http.port: 9200
+xpack.security.enabled: true
+xpack.security.enrollment.enabled: false

@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### GVM / OpenVAS ###
+# Downloaded from official Greenbone docs by gvm/setup-gvm.sh
+gvm/compose.yaml
+
+# Optional local output artifacts
+gvm/*.log
+gvm/.tmp/

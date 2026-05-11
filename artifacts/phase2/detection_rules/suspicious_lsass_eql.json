@@ -1,0 +1,12 @@
+{
+  "name": "Suspicious Process Accessing LSASS",
+  "description": "EQL rule: detect processes starting that access lsass.exe or csrss.exe by non-SYSTEM users.",
+  "risk_score": 75,
+  "severity": "high",
+  "type": "eql",
+  "index": ["logs-endpoint.events.process-*"],
+  "language": "eql",
+  "query": "process where event.action == \"start\" and process.name : (\"lsass.exe\", \"csrss.exe\") and user.name != \"SYSTEM\"",
+  "interval": "1m",
+  "enabled": true
+}
